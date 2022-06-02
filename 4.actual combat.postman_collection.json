@@ -1,0 +1,2028 @@
+{
+	"info": {
+		"_postman_id": "b2f4b334-261f-45f5-9b83-9e54b955e9e2",
+		"name": "4.actual combat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20498670"
+	},
+	"item": [
+		{
+			"name": "getuser",
+			"item": [
+				{
+					"name": "1.mrjiam-001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应等于预期\r",
+									"pm.test('Body is correct',function(){\r",
+									"    pm.response.to.have.body({\"code\": 200, \"id\": \"1\", \"name\": \"\\u5c0f\\u660e\", \"age\": 18});\r",
+									"});\r",
+									"\r",
+									"//判断响应体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}/getuser?userid=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.mrjiam-002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应等于预期\r",
+									"pm.test('Body is correct',function(){\r",
+									"    pm.response.to.have.body({\"code\": 500, \"msg\": \"\\u6ca1\\u6709\\u8fd9\\u4e2a\\u7528\\u6237\"});\r",
+									"});\r",
+									"\r",
+									"//判断响应体code=500\r",
+									"pm.test('Test response code is 500',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(500);\r",
+									"});\r",
+									"\r",
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 没有这个用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"没有这个用户\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}/getuser?userid=2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.mrjiam-003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 非法用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"非法用户\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}/getuser",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.mrjiam-004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 没有这个用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"没有这个用户\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}/getuser?userid=-1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5.mrjiam-005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 非法用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"非法用户\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}/getuser?userid=admin",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.mrjiam-006",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应等于预期\r",
+									"pm.test('Body is correct',function(){\r",
+									"    pm.response.to.have.body({\"code\": 200, \"id\": \"1\", \"name\": \"\\u5c0f\\u660e\", \"age\": 18});\r",
+									"});\r",
+									"\r",
+									"//判断响应体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/getuser",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.mrjiam-007",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应等于预期\r",
+									"pm.test('Body is correct',function(){\r",
+									"    pm.response.to.have.body({\"code\": 500, \"msg\": \"\\u6ca1\\u6709\\u8fd9\\u4e2a\\u7528\\u6237\"});\r",
+									"});\r",
+									"\r",
+									"//判断响应体code=500\r",
+									"pm.test('Test response code is 500',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(500);\r",
+									"});\r",
+									"\r",
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 没有这个用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"没有这个用户\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/getuser",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.mrjiam-008",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 非法用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"非法用户\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{domain}}/getuser",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9.mrjiam-009",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 没有这个用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('没有这个用户');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "-1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/getuser",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10.mrjiam-010",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 非法用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('非法用户');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/getuser",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11.mrjiam-011",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test(\"Test response has 非法用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('非法用户');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "10000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/getuser",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "getuser2",
+			"item": [
+				{
+					"name": "12.mrjiam-012",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应等于预期\r",
+									"pm.test('Body is correct',function(){\r",
+									"    pm.response.to.have.body({\"code\": 200, \"id\": \"1\", \"name\": \"\\u5c0f\\u660e\", \"age\": 18});\r",
+									"});\r",
+									"\r",
+									"//判断响应体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/getuser2?userid=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser2"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "13.mrjiam-013",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应等于预期\r",
+									"pm.test('Body is correct',function(){\r",
+									"    pm.response.to.have.body({\"code\": 500, \"msg\": \"\\u8bf7\\u8bbe\\u7f6eContent-Type\\u4e3aapplication/json\"});\r",
+									"});\r",
+									"\r",
+									"//判断响应体msg\r",
+									"pm.test('Test response msg is 请设置Content-Type为application/json',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"请设置Content-Type为application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}/getuser2?userid=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser2"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "14.mrjiam-014",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应等于预期\r",
+									"pm.test('Body is correct',function(){\r",
+									"    pm.response.to.have.body({\"code\": 500, \"msg\": \"\\u8bf7\\u8bbe\\u7f6eContent-Type\\u4e3aapplication/json\"});\r",
+									"});\r",
+									"\r",
+									"//判断响应体msg\r",
+									"pm.test('Test response msg is 请设置Content-Type为application/json',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"请设置Content-Type为application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/getuser2?userid=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser2"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "15.mrjiam-015",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体msg\r",
+									"pm.test('Test response msg is 没有这个用户',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"没有这个用户\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/getuser2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "16.mrjiam-016",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体msg\r",
+									"pm.test('Test response msg is 没有这个用户',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql(\"没有这个用户\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/getuser2?userid=2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getuser2"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "getmoney",
+			"item": [
+				{
+					"name": "17.mrjiam-017",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test(\"Test response code is 200\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userid\":1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{domain}}/getmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "18.mrjiam-018",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test(\"Test response msg is 参数错误\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('参数错误');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/getmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "19.mrjiam-019",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test(\"Test response msg is 没有这个用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('没有这个用户');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userid\":2}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/getmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "20.mrjiam-020",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test(\"Test response msg is 参数错误\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('参数错误');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/getmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "21.mrjiam-021",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test(\"Test response msg is 没有这个用户\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('没有这个用户');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userid\":\"admin\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/getmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "22.mrjiam-022",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应status=405\r",
+									"pm.test(\"Response status is 405\",function(){\r",
+									"    pm.response.to.have.status(405);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}/getmoney?userid=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getmoney"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addtional",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test(\"Test response msg is 参数错误\",function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('参数错误');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userid1\":\"admin\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/getmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"getmoney"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "setmoney",
+			"item": [
+				{
+					"name": "23.mrjiam-023",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断response状态码\r",
+									"//判断response状态码\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"//判断response体success是否成功\r",
+									"pm.test('Test response success',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql('成功');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "200",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "24.mrjiam-024",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test('Test response msg is 需要认证',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('需要认证');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "200",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "25.mrjiam-025",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test('Test response msg is 认证失败',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('认证失败');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "111111",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "200",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "26.mrjiam-026",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应msg\r",
+									"pm.test('Test response msg is 没有这个用户',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('没有这个用户');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "200",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "27.mrjiam-027",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900.9",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "28.mrjiam-028",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应状态是405\r",
+									"pm.test('Status code is 405',function(){\r",
+									"    pm.response.to.have.status(405)\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "setmoney2",
+			"item": [
+				{
+					"name": "29.mrjiam-029",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断response体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=token12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "30.mrjiam-030",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体msg\r",
+									"pm.test('Test response msg is cookie认证失败',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('cookie认证失败');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=token12345",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "31.mrjiam-031",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体msg\r",
+									"pm.test('Test response msg is cookie非法',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('cookie非法');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=token1111",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "32.mrjiam-032",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体msg\r",
+									"pm.test('Test response msg is 没有这个用户',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.msg).to.eql('没有这个用户');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=token12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "33.mrjiam-033",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=token12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900.9",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "34.mrjiam-034",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应状态是405\r",
+									"pm.test('Status code is 405',function(){\r",
+									"    pm.response.to.have.status(405)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=token12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "900",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/setmoney2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"setmoney2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "uploadfile",
+			"item": [
+				{
+					"name": "35.mrjiam-035",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Atest/postman/actual combat/test_uploadfile/1.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/uploadfile",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"uploadfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "36.mrjiam-036",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Atest/postman/actual combat/test_uploadfile/1.docx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/uploadfile",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"uploadfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "37.mrjiam-037",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应status\r",
+									"pm.test('Test reponse status is 500',function(){\r",
+									"    pm.response.to.have.status(500)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Atest/postman/actual combat/test_uploadfile/1.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/uploadfile",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"uploadfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "38.mrjiam-038",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//判断响应体code=200\r",
+									"pm.test('Test response code is 200',function(){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Atest/postman/actual combat/test_uploadfile/中文.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/uploadfile",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"uploadfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
